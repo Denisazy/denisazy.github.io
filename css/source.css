@@ -2,6 +2,7 @@
 @import 'normalize.css';
 
 
+
 $black-normal: #505050;
 $black-bold: $111;
 $black-light: #222;
@@ -44,7 +45,7 @@ body {
 body, h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: source sans pro, proxima nova, -apple-system, sans-serif;
+  font-family: "Microsoft JhengHei", "Microsoft YaHei",source sans pro, proxima nova, -apple-system, sans-serif;
   -moz-font-feature-settings: "liga" on;
   transition: all 250ms ease;
 }
