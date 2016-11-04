@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript继承 | 混乱实录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Javascript语言依靠一种很”原型链”（prototype chain）模式，来实现继承。
+
+举例一个叫做DOG的构造函数，表示狗对象的原型：
+function DOG(name){
+    this.name=name;
+}
+对这个构造函数使用new，就会生成一个狗对象的实例:
+var dog = new DOG(&amp;apos;大龙&amp;apos;);
+alert(dog.name); //大龙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript继承">
+<meta property="og:url" content="http://yoursite.com/2016/11/01/prototype-inheritance/index.html">
+<meta property="og:site_name" content="混乱实录">
+<meta property="og:description" content="Javascript语言依靠一种很”原型链”（prototype chain）模式，来实现继承。
+
+举例一个叫做DOG的构造函数，表示狗对象的原型：
+function DOG(name){
+    this.name=name;
+}
+对这个构造函数使用new，就会生成一个狗对象的实例:
+var dog = new DOG(&amp;apos;大龙&amp;apos;);
+alert(dog.name); //大龙">
+<meta property="og:updated_time" content="2016-11-04T13:09:34.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript继承">
+<meta name="twitter:description" content="Javascript语言依靠一种很”原型链”（prototype chain）模式，来实现继承。
+
+举例一个叫做DOG的构造函数，表示狗对象的原型：
+function DOG(name){
+    this.name=name;
+}
+对这个构造函数使用new，就会生成一个狗对象的实例:
+var dog = new DOG(&amp;apos;大龙&amp;apos;);
+alert(dog.name); //大龙">
+  
+    <link rel="alternate" href="/atom.xml" title="混乱实录" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/fancybox/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+</head>
+
+  
+    <body>
+  
+      <div id="container" class="container">
+        <article id="post-prototype-inheritance" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Javascript继承
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>Javascript语言依靠一种很”原型链”（prototype chain）模式，来实现继承。</p>
+<hr>
+<p>举例一个叫做DOG的构造函数，表示狗对象的原型：</p>
+<pre><code>function DOG(name){
+    this.name=name;
+}
+</code></pre><p>对这个构造函数使用new，就会生成一个狗对象的实例:</p>
+<pre><code>var dog = new DOG(&apos;大龙&apos;);
+alert(dog.name); //大龙
+</code></pre><p>注意构造函数中的this关键字，它就代表了新创建的实例对象。</p>
+<p>用构造函数生成实例对象，有一个缺点，那就是无法共享属性和方法。<br>比如，在DOG对象的构造函数中，设置一个实例对象的共有属性species。</p>
+<pre><code>function DOG(name){      //构造函数
+    this.name = name;  
+    this.species = &apos;狗科&apos;;    //设置属性
+}
+var dogB = new DOG(&apos;大龙&apos;);  //生成实例对象
+var dogD = new DOG(&apos;大门&apos;);  
+dogB.species = &apos;龙&apos;;  //两个对象的species属性是独立的，修改其中一个，不会影响到另一个
+alert(dogD.species);  //显示狗科，不受dogB影响
+</code></pre><p>每一个实例对象，都有自己的属性和方法的副本，无法分享一些相同的属性。<br>遂为构造函数设置一个prototype属性。这个属性包含一个prototype对象。<br>实例对象一旦创建，将自动引用prototype对象的属性和方法。实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。</p>
+<pre><code>function DOG(name){      //构造函数
+    this.name = name;  
+}
+DOG.prototype = { species : &apos;狗科&apos; };  
+var dogB = new DOG(&apos;大龙&apos;);  
+var dogD = new DOG(&apos;大门&apos;);  
+alert(dogD.species);  //狗科
+alert(dogB.species);  //狗科
+</code></pre><p>species属性放在prototype对象里，是两个实例对象共享的。只要修改了prototype对象，就会同时影响到两个实例对象</p>
+<pre><code>DOG.prototype.species = &apos;龙&apos;;
+alert(dogB.species);  //龙
+alert(dogD.species);  //龙
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2016/11/01/prototype-inheritance/" class="article-date">
+  <time datetime="2016-10-31T16:00:00.000Z" itemprop="datePublished">2016-11-01</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Learning/">Learning</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Prototype/">Prototype</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2016/11/04/this/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          this的用法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/24/flex-css-learning/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Flex学习笔记</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>抬手擼起大背頭，餘生道一句別來無恙</p>
+
+
+      </div>
+    </footer>
+
+      
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

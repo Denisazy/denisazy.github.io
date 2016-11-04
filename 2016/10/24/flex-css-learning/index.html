@@ -31,7 +31,7 @@ Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型�
   display: inline-flex;
 }
 Webkit内">
-<meta property="og:updated_time" content="2016-10-24T15:18:39.018Z">
+<meta property="og:updated_time" content="2016-10-31T13:18:24.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flex学习笔记">
 <meta name="twitter:description" content="今日用到css的flex属性，不甚了解，看教程之余觉得阮神写得相当全面，一篇语法，一篇实例，看完也就知道怎么用了。
@@ -128,8 +128,38 @@ Webkit内">
 <li>flex</li>
 <li>align-self</li>
 </ul>
-<p>以下是简单实例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;flex&lt;/title&gt;</div><div class="line">	&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">	<span class="comment">#box &#123;</span></div><div class="line">	display: -webkit-flex;</div><div class="line">	display: flex;    //使用flex布局</div><div class="line">	-webkit-flex-direction: row;</div><div class="line">	flex-direction: row;   //横排</div><div class="line">	flex-wrap: wrap;   //换行</div><div class="line">&#125;</div><div class="line"></div><div class="line">.item &#123;</div><div class="line">	border: 1px solid black;</div><div class="line">	-webkit-flex: auto;</div><div class="line">	flex: auto;   </div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;div id=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div class=<span class="string">"item"</span> &gt;我有一壶酒 &lt;/div&gt;</div><div class="line">    &lt;div class=<span class="string">"item"</span> &gt;足以慰风尘&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>显示效果大致是这样的：</p>
+<p>以下是简单实例</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;flex&lt;/title&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    #box {
+    display: -webkit-flex;
+    display: flex;    //使用flex布局
+    -webkit-flex-direction: row;
+    flex-direction: row;   //横排
+    flex-wrap: wrap;   //换行
+    }
+
+    .item {
+    border: 1px solid black;
+    -webkit-flex: auto;
+    flex: auto;   
+    }
+&lt;/style&gt;
+
+&lt;div id=&quot;box&quot;&gt;
+        &lt;div class=&quot;item&quot; &gt;我有一壶酒 &lt;/div&gt;
+        &lt;div class=&quot;item&quot; &gt;足以慰风尘&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>显示效果大致是这样的：</p>
 <p><table><br>    <tr><br>        <td>我有一壶酒</td><br>        <td>足以慰风尘</td><br>    </tr><br></table><br>宽度变窄，自动换行：</p>
 <p><table><br>    <tr><br>        <td>我有一壶酒</td><br>    </tr><br>    <tr><br>        <td>足以慰风尘</td><br>    </tr><br></table><br>以上。</p>
 
@@ -172,7 +202,14 @@ Webkit内">
     
 <nav id="article-nav" class="article-nav">
   
-    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+    <a href="/2016/11/01/prototype-inheritance/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript继承
+        
+      </div>
+    </a>
   
   
     <a href="/2016/10/10/knight-is-dead/" id="article-nav-older" class="article-nav-link-wrap older">
